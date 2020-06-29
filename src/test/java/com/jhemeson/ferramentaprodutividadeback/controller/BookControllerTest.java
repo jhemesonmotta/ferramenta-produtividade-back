@@ -56,15 +56,4 @@ public class BookControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message", Is.is(expectedMessageResponse.getMessage())));
     }
-
-    @Test
-    void testWhenPOSTwithInvalidISBNIsCalledThenBadRequestShouldBeReturned() throws Exception {
-        BookDTO bookDTO = BookUtils.createFakeBookDTO();
-        bookDTO.setIsbn("invalid isbn");
-
-        mockMvc.perform(MockMvcRequestBuilders.post(BOOK_API_URL_PATH)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(BookUtils.asJsonString(bookDTO)))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
 }

@@ -4,6 +4,7 @@ import com.jhemeson.ferramentaprodutividadeback.dto.BookDTO;
 import com.jhemeson.ferramentaprodutividadeback.dto.MessageResponseDTO;
 import com.jhemeson.ferramentaprodutividadeback.entity.Author;
 import com.jhemeson.ferramentaprodutividadeback.entity.Book;
+import com.jhemeson.ferramentaprodutividadeback.exception.BookNotFoundException;
 import com.jhemeson.ferramentaprodutividadeback.repository.BookRepository;
 import com.jhemeson.ferramentaprodutividadeback.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDTO findById(@PathVariable Long id) {
+    public BookDTO findById(@PathVariable Long id) throws BookNotFoundException {
         return bookService.findById(id);
     }
 }
