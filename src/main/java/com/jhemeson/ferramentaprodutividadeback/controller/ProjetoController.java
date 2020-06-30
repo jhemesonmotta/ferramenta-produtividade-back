@@ -57,6 +57,17 @@ public class ProjetoController {
         return projetoService.create(projetoDTO);
     }
 
+    // adicionar lista
+    @PostMapping("/addAll")
+    public MessageResponseDTO createAll(@RequestBody List<ProjetoDTO> projetos) {
+        for (ProjetoDTO p : projetos) {
+            projetoService.create(p);
+        }
+        return MessageResponseDTO.builder().
+                message("Todos os projetos foram adicionados à base de dados.")
+                .build();
+    }
+
     // atualizar
     @PostMapping("/edit")
     public MessageResponseDTO update(@RequestBody ProjetoDTO projetoDTO) {
