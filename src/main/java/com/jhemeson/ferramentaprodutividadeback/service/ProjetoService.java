@@ -55,4 +55,14 @@ public class ProjetoService {
                 message("Todos os projetos foram apagados da base de dados.")
                 .build();
     }
+
+    public MessageResponseDTO update(ProjetoDTO projetoDTO) {
+
+        Projeto projetoToCreate = projetoMapper.toModel(projetoDTO);
+        Projeto projetoCreated = projetoRepository.save(projetoToCreate);
+
+        return MessageResponseDTO.builder().
+                message(projetoCreated.getNome() + " foi atualizano na base de dados.")
+                .build();
+    }
 }

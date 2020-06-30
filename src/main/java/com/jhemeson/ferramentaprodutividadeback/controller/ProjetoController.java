@@ -58,4 +58,8 @@ public class ProjetoController {
     }
 
     // atualizar
+    @PostMapping("/edit")
+    public MessageResponseDTO update(@RequestBody ProjetoDTO projetoDTO) {
+        return projetoService.update(projetoDTO);
+    }
 }
