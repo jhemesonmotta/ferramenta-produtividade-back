@@ -36,15 +36,23 @@ public class ProjetoService {
     }
 
     public ProjetoDTO findById(Long id) throws NotFoundException {
-        Projeto projeto = projetoRepository.findById(id).orElseThrow(() -> new NotFoundException("Projeto não encontrado"));
+        Projeto projeto = projetoRepository.findById(id).orElseThrow(() -> new NotFoundException("Projeto não encontrado."));
         return projetoMapper.toDTO(projeto);
     }
 
-    public void deleteById(Long id) {
+    public MessageResponseDTO deleteById(Long id) {
         projetoRepository.deleteById(id);
+
+        return MessageResponseDTO.builder().
+                message("Projeto com o ID " + id + " foi apagado.")
+                .build();
     }
 
-    public void deleteAll() {
+    public MessageResponseDTO deleteAll() {
         projetoRepository.deleteAll();
+
+        return MessageResponseDTO.builder().
+                message("Todos os projetos foram apagados da base de dados.")
+                .build();
     }
 }

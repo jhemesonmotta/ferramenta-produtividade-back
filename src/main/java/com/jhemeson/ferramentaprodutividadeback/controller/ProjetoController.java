@@ -33,7 +33,23 @@ public class ProjetoController {
         return projetoService.findById(id);
     }
 
-    // deletar
+    // deletar por id
+    @DeleteMapping("/{id}")
+    public MessageResponseDTO deleteById(@PathVariable Long id) throws NotFoundException {
+        if(projetoService.findById(id) != null){
+            return projetoService.deleteById(id);
+        } else {
+            return MessageResponseDTO.builder().
+                    message("Projeto não encontrado.")
+                    .build();
+        }
+    }
+
+    // limpar base (deletar todos)
+    @DeleteMapping("/deleteAll")
+    public MessageResponseDTO deleteAll() {
+        return projetoService.deleteAll();
+    }
 
     // adicionar
     @PostMapping
