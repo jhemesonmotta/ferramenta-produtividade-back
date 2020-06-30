@@ -41,7 +41,7 @@ public class Projeto {
     @Column(name = "correlacao_tamanho")
     private Double correlacaoTamanho;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "qualidade_id")
     private PageSpeedQualidade qualidade;
 
