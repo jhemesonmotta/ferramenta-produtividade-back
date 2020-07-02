@@ -62,7 +62,7 @@ public class ProjetoService {
         Projeto projetoCreated = projetoRepository.save(projetoToCreate);
 
         return MessageResponseDTO.builder().
-                message(projetoCreated.getNome() + " foi atualizano na base de dados.")
+                message(projetoCreated.getNome() + " foi atualizado na base de dados.")
                 .build();
     }
 }
