@@ -20,6 +20,9 @@ public class Projeto {
     @Column(nullable = false, unique = true)
     private String nome;
 
+    @Column
+    private String linguagemProgramacao;
+
     @Column(name = "home_page")
     private String homePage;
 

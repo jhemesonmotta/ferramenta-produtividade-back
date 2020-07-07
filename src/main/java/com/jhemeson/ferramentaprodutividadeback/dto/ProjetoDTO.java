@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class ProjetoDTO {
     private Long id;
     private String nome;
+    private String linguagemProgramacao;
     private String homePage;
     private Double diversidade;
     private Double frequenciaCommits;
