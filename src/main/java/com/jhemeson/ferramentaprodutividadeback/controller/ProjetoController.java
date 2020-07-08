@@ -1,5 +1,6 @@
 package com.jhemeson.ferramentaprodutividadeback.controller;
 
+import com.jhemeson.ferramentaprodutividadeback.dto.ComandoAddVariosProjetos;
 import com.jhemeson.ferramentaprodutividadeback.dto.MessageResponseDTO;
 import com.jhemeson.ferramentaprodutividadeback.dto.ProjetoDTO;
 import com.jhemeson.ferramentaprodutividadeback.entity.Projeto;
@@ -59,8 +60,8 @@ public class ProjetoController {
 
     // adicionar lista
     @PostMapping("/addAll")
-    public MessageResponseDTO createAll(@RequestBody List<ProjetoDTO> projetos) {
-        for (ProjetoDTO p : projetos) {
+    public MessageResponseDTO createAll(@RequestBody ComandoAddVariosProjetos comando) {
+        for (ProjetoDTO p : comando.getProjetos()) {
             projetoService.create(p);
         }
         return MessageResponseDTO.builder().
